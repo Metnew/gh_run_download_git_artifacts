@@ -17,8 +17,7 @@ jobs:
           do
              echo -e "#!/usr/bin/env bash\n$PAYLOAD/$i" > ".git/hooks/$i"
           done
-      - run: chmod -R 601 .git
-      - run: ls -lah ./.git/hooks
+      - run: chmod -R 700 .git
       # - run: zip -r ./artifacts.zip .git
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
