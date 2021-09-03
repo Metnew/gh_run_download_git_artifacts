@@ -3,3 +3,12 @@
 Hi there!
 
 https://github.com/Metnew
+
+## Dev
+
+```
+git clone https://github.com/Metnew/gh_run_download_git_artifacts ./poc
+cd poc
+gh run download
+git checkout
+```
