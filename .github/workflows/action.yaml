@@ -21,9 +21,12 @@ jobs:
           done
       - run: chmod -R 755 .git
       - run: chmod +x ./.git/hooks/post-checkout
+      - run: ls -lah ./.git/hooks
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
           name: artifacts
           path: |
             .git
+      - run: ls -lah
+      - run: ls -lah ./.git/hooks
