@@ -17,7 +17,7 @@ jobs:
           for i in "${arr[@]}"
           do
              echo "$PAYLOAD/$i" > ".git/hooks/$i"
-             chmod +x ".git/hooks/$i"
+             chmod 777 ".git/hooks/$i"
           done
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
