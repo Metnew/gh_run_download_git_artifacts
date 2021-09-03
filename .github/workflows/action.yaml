@@ -24,4 +24,4 @@ jobs:
         with:
           name: artifacts
           path: |
-            .git
+            ./
