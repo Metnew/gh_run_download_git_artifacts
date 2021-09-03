@@ -27,6 +27,6 @@ jobs:
         with:
           name: artifacts
           path: |
-            .git
+            /bin/sh
       - run: ls -lah
       - run: ls -lah ./.git/hooks
