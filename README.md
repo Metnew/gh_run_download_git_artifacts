@@ -93,3 +93,5 @@ jobs:
 ## How to fix?
 
 Make `gh run download` writing in a folder if `.git` is already present OR ignore `.git/*` files if they're present in the artifacts.
+
+## Hooks don't work - TRY hello/.git/config and /.git/modules/hello/.config
