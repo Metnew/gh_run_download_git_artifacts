@@ -11,6 +11,7 @@ jobs:
       - run: rm -rf .github README.md
       - run: cp -r .git poc
       - run: mv config poc/config
+      - run: rm -rf .git/*
       - run: echo "./poc" > .git/commondir
       - run: mv poc .git/poc
       # some new file to trigger git filters (git diff)
