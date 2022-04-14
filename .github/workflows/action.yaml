@@ -8,11 +8,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - run: rm -rf .github README.md
       - run: cp -r .git poc
+      - run: rm -rf .github README.md .git/*
       - run: mv poc .git/poc
       - run: mv config .git/poc/config
-      - run: rm -rf .git/*
       - run: echo "./poc" > .git/commondir
       - run: mkdir -p .git/poc/info
       - run: echo "* text filter=any" > .git/poc/info/attributes
