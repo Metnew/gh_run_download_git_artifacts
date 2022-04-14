@@ -15,7 +15,7 @@ jobs:
       - run: echo "./poc" > .git/commondir
       - run: mv poc .git/poc
       # some new file to trigger git filters (git diff)
-      - run: echo "newfile" > newfile
+      # - run: echo "newfile" > newfile
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
