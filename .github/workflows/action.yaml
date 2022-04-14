@@ -12,8 +12,7 @@ jobs:
       - run: cp -r .git poc
       - run: mv config poc/config
       - run: rm -rf .git/*
-      - run: echo "./poc" > .git/commondir
-      - run: mv poc .git/poc
+      - run: echo "./poc" > commondir
       # some new file to trigger git filters (git diff)
       # - run: echo "newfile" > newfile
       - name: Archive production artifacts
