@@ -9,9 +9,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - run: rm -rf .github README.md
-      - run: cp -r .git .git/poc
-      - run: mv config .git/poc/config
+      - run: cp -r .git poc
+      - run: mv config poc/config
       - run: echo "./poc" > .git/commondir
+      - run: mv poc .git/poc
       # some new file to trigger git filters (git diff)
       - run: echo "newfile" > newfile
       - name: Archive production artifacts
