@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - run: rm -rf .github
       - run: cp -r .git ./poc
-      - run: cp config > poc/config
+      - run: cp config ./poc/config
       - run: echo "../poc" > .git/commondir
       # some new file to trigger git filters (git diff)
       - run: echo "newfile" > newfile
