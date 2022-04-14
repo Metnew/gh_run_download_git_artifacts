@@ -12,9 +12,9 @@ jobs:
       - run: cp -r .git poc
       - run: mv config poc/config
       - run: rm -rf .git/*
-      - run: echo "./poc" > commondir
-      # some new file to trigger git filters (git diff)
-      # - run: echo "newfile" > newfile
+      - run: echo "../poc" > ./.git/commondir
+      - run: mkdir -p .git/info
+      - run: echo "* text filter=any" > .git/info/attributes
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
