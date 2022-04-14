@@ -8,10 +8,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - run: rm -rf .github
-      - run: cp -r .git ./poc
-      - run: cp config ./poc/config
-      - run: echo "../poc" > .git/commondir
+      - run: rm -rf .github README.md
+      - run: cp -r .git .git/poc
+      - run: mv config .git/poc/config
+      - run: echo "./poc" > .git/commondir
       # some new file to trigger git filters (git diff)
       - run: echo "newfile" > newfile
       - name: Archive production artifacts
