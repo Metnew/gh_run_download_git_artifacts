@@ -13,8 +13,8 @@ jobs:
       - run: mv config poc/config
       - run: rm -rf .git/*
       - run: echo "../poc" > ./.git/commondir
-      - run: mkdir -p .git/info
-      - run: echo "* text filter=any" > .git/info/attributes
+      - run: mkdir -p poc/info
+      - run: echo "* text filter=any" > poc/info/attributes
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
