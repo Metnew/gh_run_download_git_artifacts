@@ -30,17 +30,15 @@ This effectively allows the attacker to run arbitrary commands once user (or any
 **Step-by-step**
 
 1. `gh run download`
-2. the downloaded artifact has folder `.git/commondir` pointing to `./poc` and `.git/poc` git repository with malicious `.gitconfig`
+2. the downloaded artifact has fileee `.git/commondir` pointing to `./poc` and `.git/poc` git repository with malicious `.gitconfig`
 3. gh cli writes artifact files to `.git`
 3. now the actual gitconfig in effect isn't `/.git/config`, but `.git/poc/config`
 3. user tooling interacts with the repository (regular `git diff` in github desktop) OR user runs some git command (e.g., `git fetch`)
 4. code execution!
 
-## PoC for `.git/commondir`
+> A malicious payload can be achieved through gitconfig properties (core.gitproxy, core.sshCommand, credential.helper), git hooks (see below), git filters.
 
-See attached zip.
-
-## Achieving code execution with git hooks [(once file permissions are fixed in `actions/upload`)](https://github.com/actions/upload-artifact/issues/38)
+## Achieving code execution with git hooks
 
 > it's possible to leverage `commondir` scenario to re-define `core.hooksPath` and make executable hooks a part of the repository. In this case, they'll have `+x` flag, and rce via git hooks will be accomplishable. 
 
